@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {check} from "express-validator";
 import {validateDocuments} from "../middlewares/validate.documents.js";
-import { getCliente, getOneCliente, addCliente } from "../controllers/cliente.controller.js";
+import { getCliente, getOneCliente, addCliente, deleteCliente} from "../controllers/cliente.controller.js";
 
 const router = Router();
 
@@ -15,5 +15,6 @@ router.post('/add',[
     check("direccion", "Dirección no válida, debe tener más caracteres").isLength({min:5}),
     validateDocuments
 ],addCliente);
+router.delete('/delete/:id',deleteCliente);
 
 export default router;

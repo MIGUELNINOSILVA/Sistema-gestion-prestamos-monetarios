@@ -44,11 +44,21 @@ const addCliente = async (req, res) => {
         res.status(500);
         res.send(error);
     };
+}
 
+const deleteCliente = async(req, res) => {
+    try {
+        await Cliente.deleteOne({_id:req.params.id});
+        res.status(200).send({respuesta: "Eliminado Correctamente"});
+    } catch (error) {
+        res.status(500).send(error);
+    };
+    
 }
 
 export {
     getCliente,
     getOneCliente,
-    addCliente
+    addCliente,
+    deleteCliente
 }
