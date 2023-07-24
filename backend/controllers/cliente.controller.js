@@ -56,9 +56,20 @@ const deleteCliente = async(req, res) => {
     
 }
 
+const updateCliente = async(req, res) => {
+    try {
+        let updateCliente = await Cliente.findOneAndUpdate({_id:req.params.id},req.body,{new:true});
+        res.json(updateCliente);
+    } catch (error) {
+        res.status(500).send(error);
+    };
+    
+}
+
 export {
     getCliente,
     getOneCliente,
     addCliente,
-    deleteCliente
+    deleteCliente,
+    updateCliente
 }

@@ -21,6 +21,8 @@ const clienteSchema = mongoose.Schema({
         type: String,
         required: true
     }
+},{
+    timestamps : true
 });
 
 const Cliente = mongoose.model('cliente', clienteSchema);
