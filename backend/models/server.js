@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import clienteRoute from "../routes/cliente.routes.js";
+import prestamoRoute from "../routes/prestamo.routes.js";
 
 class Server{
     constructor(){
@@ -8,6 +9,7 @@ class Server{
         this.port = process.env.PORT;
         /* Paths */
         this.clientePath = "/api/clientes"; 
+        this.prestamoPath = "/api/prestamos"; 
         /* Middlewares */
         this.middlewares();
         /* Routing */
@@ -31,6 +33,7 @@ class Server{
 
     routes(){
         this.app.use(this.clientePath, clienteRoute);
+        this.app.use(this.prestamoPath, prestamoRoute);
     }
 }
 

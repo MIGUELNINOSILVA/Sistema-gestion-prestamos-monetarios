@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const prestamoSchema = mongoose.Schema({
-    idCliente:{
-        type:  String,
+    idCliente: {
+        type: String,
         required: true
     },
-    frecuenciaPago:{
+    frecuenciaPago: {
         type: String,
         required: true,
         enum: ['diario', 'semanal', 'quincenal', 'mensual', 'unico'],
@@ -30,12 +30,12 @@ const prestamoSchema = mongoose.Schema({
         type: Number,
         required: false
     },
-    total : {
+    total: {
         type: Number,
         required: true
     },
-    cantidadCuotas : {
-        type : Number,
+    cantidadCuotas: {
+        type: Number,
         required: true
     },
     valorCuota: {
@@ -47,3 +47,7 @@ const prestamoSchema = mongoose.Schema({
         required: true
     }
 });
+
+const Prestamo = mongoose.model('prestamo', prestamoSchema);
+
+export default Prestamo;
