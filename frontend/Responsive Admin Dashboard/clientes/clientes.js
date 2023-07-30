@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', loadContent());
 
 // Selectores
 const tablaClientes = document.getElementById('tablaClientes');
+const loading = document.getElementById('loading');
 
 async function loadContent() {
     try {
@@ -39,6 +40,9 @@ async function loadContent() {
             `;
         });
     } catch (error) {
-        console.log(error);
+        alert("NO CARGA LA DATA, INTENTA DE NUEVO")
+    } finally {
+        // Ocultar el indicador de carga una vez que se complete la función
+        loading.style.display = 'none';
     }
 }
