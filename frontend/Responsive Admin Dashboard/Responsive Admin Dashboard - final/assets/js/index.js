@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', loadContent());
 const cantidadClientes = document.getElementById('cantidadClientes');
 const cantidadPrestamos = document.getElementById('cantidadPrestamos');
 const cantidadTotalPrestada = document.getElementById('cantidadTotalPrestada');
+const ganaciaParcial = document.getElementById('ganaciaParcial');
 
 async function loadContent() {
     try {
@@ -33,6 +34,9 @@ async function loadContent() {
             maximumFractionDigits: 2,
             minimumFractionDigits: 2,
         });
+
+        ganaciaParcial.innerHTML = `$${sumaTotalInteres.toLocaleString(undefined, {maximumFractionDigits: 2,
+            minimumFractionDigits: 2})}`
         cantidadTotalPrestada.innerHTML = `$${formattedNumber}`;
 
         const ctx = document.getElementById('myChart');
