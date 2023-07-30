@@ -19,43 +19,47 @@ async function loadContent() {
 
         // Mostrar cantidad total prestada
         let sumaTotalPrestamo = 0;
+        let sumaTotalInteres = 0;
         prestamos.forEach(prestamo => {
             console.log(prestamo);
             const {
-                monto
+                monto,
+                interes
             } = prestamo;
             sumaTotalPrestamo += monto;
+            sumaTotalInteres += interes;
         });
-        const number = 1234567.89123;
         const formattedNumber = sumaTotalPrestamo.toLocaleString(undefined, {
             maximumFractionDigits: 2,
             minimumFractionDigits: 2,
         });
+        cantidadTotalPrestada.innerHTML = `$${formattedNumber}`;
 
-        cantidadTotalPrestada.innerHTML = `$ ${formattedNumber}`;
+        const ctx = document.getElementById('myChart');
+        ctx.width = '300px';
+        ctx.height = '300px';
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Prestado', 'Intereses', 'Por Cobrar', 'Cobrado'],
+                datasets: [{
+                    label: 'Estadisticas generales',
+                    data: [sumaTotalPrestamo, sumaTotalInteres, 400000, 800000],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        
     } catch (error) {
         console.log(error);
     };
 
 }
-
-const ctx = document.getElementById('myChart');
-
-new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Prestado', 'Intereses', 'Por Cobrar', 'Cobrado'],
-        datasets: [{
-            label: 'Estadisticas generales',
-            data: [1000000, 200000, 400000, 800000],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});

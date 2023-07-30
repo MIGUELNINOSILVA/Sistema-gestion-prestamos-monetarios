@@ -217,9 +217,11 @@ body {
   position: relative;
   width: 100%;
   padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  grid-gap: 30px;
 }
 
 .cardBox .card {
@@ -265,8 +267,8 @@ body {
   position: relative;
   width: 100%;
   padding: 20px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   grid-gap: 30px;
   /* margin-top: 10px; */
 }
@@ -477,4 +479,9 @@ body {
   height: 4rem;
   /* border: 1px solid #000; */
   display: flex;
+}
+
+#estadisticasGrafico{
+  width: 35rem;
+  height: 35rem;
 }
