@@ -62,8 +62,11 @@ async function loadContent() {
         });
 
         
-    } catch (error) {
-        console.log(error);
+    }  catch (error) {
+        alert("NO CARGA LA DATA, INTENTA DE NUEVO")
+    } finally {
+        // Ocultar el indicador de carga una vez que se complete la función
+        loading.style.display = 'none';
     };
 
 }
