@@ -30,7 +30,7 @@ body {
 /* =============== Navigation ================ */
 .navigation {
   position: fixed;
-  width: 300px;
+  width: 250px;
   height: 100%;
   background: var(--black);
   border-left: 10px solid var(--blue);
@@ -38,7 +38,7 @@ body {
   overflow: hidden;
 }
 .navigation.active {
-  width: 60px;
+  width: 70px;
 }
 
 .navigation ul {
