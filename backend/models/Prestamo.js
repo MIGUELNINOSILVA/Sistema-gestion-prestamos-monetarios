@@ -1,12 +1,20 @@
 import mongoose from "mongoose";
 
 const prestamoSchema = mongoose.Schema({
+    idCliente:{
+        type:  String,
+        required: true
+    },
     frecuenciaPago:{
         type: String,
         required: true,
         enum: ['diario', 'semanal', 'quincenal', 'mensual', 'unico'],
     },
     fechaInicio: {
+        type: Date,
+        required: true
+    },
+    fechaFin: {
         type: Date,
         required: true
     },
