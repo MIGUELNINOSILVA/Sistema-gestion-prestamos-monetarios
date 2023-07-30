@@ -1,3 +1,21 @@
+import {getClientes} from "./API.js";
+
+document.addEventListener('DOMContentLoaded', loadContent());
+
+// Selectores
+const cantidadClientes  = document.getElementById('cantidadClientes');
+
+async function loadContent() {
+    try {
+        const clientes  =  await getClientes();
+        console.log(clientes);
+        cantidadClientes.innerHTML = clientes.length;
+    } catch (error) {
+        console.log(error);
+    };
+    
+}
+
 const ctx = document.getElementById('myChart');
 
 new Chart(ctx, {
