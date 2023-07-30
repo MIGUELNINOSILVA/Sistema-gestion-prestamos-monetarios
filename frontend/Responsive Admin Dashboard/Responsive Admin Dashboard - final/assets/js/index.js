@@ -41,11 +41,11 @@ async function loadContent() {
         new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['Prestado', 'Intereses', 'Por Cobrar', 'Cobrado'],
+                labels: [`Prestado - $${sumaTotalPrestamo.toLocaleString()}`, `Intereses  - $${sumaTotalInteres.toLocaleString()}`, 'Por Cobrar', 'Cobrado'],
                 datasets: [{
                     label: 'Estadisticas generales',
                     data: [sumaTotalPrestamo, sumaTotalInteres, 400000, 800000],
-                    borderWidth: 1
+                    borderWidth: 2
                 }]
             },
             options: {
