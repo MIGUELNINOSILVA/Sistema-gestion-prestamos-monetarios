@@ -1,19 +1,42 @@
-import {getClientes} from "./API.js";
+import {
+    getClientes,
+    getPrestamos
+} from "./API.js";
 
 document.addEventListener('DOMContentLoaded', loadContent());
 
 // Selectores
-const cantidadClientes  = document.getElementById('cantidadClientes');
+const cantidadClientes = document.getElementById('cantidadClientes');
+const cantidadPrestamos = document.getElementById('cantidadPrestamos');
+const cantidadTotalPrestada = document.getElementById('cantidadTotalPrestada');
 
 async function loadContent() {
     try {
-        const clientes  =  await getClientes();
-        console.log(clientes);
+        const clientes = await getClientes();
+        const prestamos = await getPrestamos();
         cantidadClientes.innerHTML = clientes.length;
+        cantidadPrestamos.innerHTML = prestamos.length;
+
+        // Mostrar cantidad total prestada
+        let sumaTotalPrestamo = 0;
+        prestamos.forEach(prestamo => {
+            console.log(prestamo);
+            const {
+                monto
+            } = prestamo;
+            sumaTotalPrestamo += monto;
+        });
+        const number = 1234567.89123;
+        const formattedNumber = sumaTotalPrestamo.toLocaleString(undefined, {
+            maximumFractionDigits: 2,
+            minimumFractionDigits: 2,
+        });
+
+        cantidadTotalPrestada.innerHTML = `$ ${formattedNumber}`;
     } catch (error) {
         console.log(error);
     };
-    
+
 }
 
 const ctx = document.getElementById('myChart');
