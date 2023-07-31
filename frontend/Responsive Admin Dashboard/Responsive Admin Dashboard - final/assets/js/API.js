@@ -37,6 +37,28 @@ const updateClientes = async(id, data) => {
     };
     
 }
+
+const deleteClientes = async (id) => {
+    try {
+        const response = await fetch(`${clientesApi}/delete/${id}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        // Verificar si la eliminación se realizó correctamente
+        if (response.ok) {
+            const data = await response.json(); // Si el API responde con JSON
+            return data; // Puedes retornar la respuesta del API si es necesario
+        } else {
+            // En caso de que la eliminación no sea exitosa, lanzar un error
+            throw new Error('Error al eliminar el cliente');
+        }
+    } catch (error) {
+        console.log('Error en la eliminación:', error.message);
+        // Puedes hacer algo más aquí, como mostrar un mensaje de error en la interfaz de usuario
+    }
+};
+
 // Prestamos
 const getPrestamos = async() => {
     try {
@@ -53,5 +75,6 @@ export{
     getClientes,
     getPrestamos,
     getOneClientes,
-    updateClientes
+    updateClientes,
+    deleteClientes
 }

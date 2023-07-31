@@ -1,6 +1,7 @@
 import {
     getClientes,
-    getPrestamos
+    getPrestamos,
+    deleteClientes
 } from "../Responsive Admin Dashboard - final/assets/js/API.js";
 
 document.addEventListener('DOMContentLoaded', loadContent());
@@ -39,7 +40,7 @@ async function loadContent() {
                 <td>${cantidadPrestamosActivos}</td>
                 <td>${cantidadPrestamos}</td>
                 <td><button><a href="detalleCliente.html?id=${_id}">Detalle</a></button></td>
-                <td><button class="delete">Eliminar</button></td>
+                <td><button class="delete delete-cliente" id="${_id}">Eliminar</button></td>
 
             </tr>
             `;
@@ -52,9 +53,18 @@ async function loadContent() {
             </tr>`;
         });
         const botonModal = document.querySelectorAll('.open-modal');
+        const deleteCliente = document.querySelectorAll('.delete-cliente');
+        deleteCliente.forEach(eliminar => {
+            eliminar.addEventListener('click',async(e)=>{
+                deleteClientes(e.target.id)
+                if(window.confirm('¿Estás seguro de eliminar este cliente?')) {
+                    console.log("Autorizo");
+                }
+            });
+        });
         botonModal.forEach(boton => {
             boton.addEventListener('click', (e)=>{
-                console.log(e.target.id);
+                
             })
         });
     } catch (error) {
