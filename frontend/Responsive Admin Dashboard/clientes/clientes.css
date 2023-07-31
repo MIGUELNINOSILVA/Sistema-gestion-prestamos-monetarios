@@ -66,3 +66,21 @@ button:hover {
         transform: translateY(-18px);
     }
 }
+
+/* Contenedor */
+.contenedor {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.details-clientes {
+    width: 70%;
+}
+
+.details-resumen {
+    width: 30%;
+}
+
+/* Modal */
+
