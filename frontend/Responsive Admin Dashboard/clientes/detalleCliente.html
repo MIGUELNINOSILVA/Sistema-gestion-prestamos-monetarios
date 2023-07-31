@@ -11,6 +11,7 @@
         type="image/x-icon" />
     <link rel="stylesheet" href="../Responsive Admin Dashboard - final/assets/css/style.css" />
     <link rel="stylesheet" href="./clientes.css" />
+    <link rel="stylesheet" href="./detalleCliente.css">
 </head>
 
 <body>
@@ -98,14 +99,46 @@
 
             <!-- ================ Order Details List ================= -->
             <div class="contenedor">
-                <div class="details details-clientes">
+                <div class="details details-all">
                     <div class="recentOrders">
-                        <h2>Cliente <span id="nombreClienteTitle"></span></h2>
+                        <h2>Cliente - <span id="nombreClienteTitle"></span></h2>
                         <div class="loader" id="loading">
                             <li class="ball"></li>
                             <li class="ball"></li>
                             <li class="ball"></li>
                         </div>
+                            <div class="modal">
+                                <form class="form">
+                                    <div class="separator">
+                                        <hr class="line">
+                                        <p id="titleForm"></p>
+                                        <hr class="line">
+                                    </div>
+                                    <div class="credit-card-info--form">
+                                        <div class="input_container">
+                                            <label for="password_field" class="input_label">Card holder full
+                                                name</label>
+                                            <input id="password_field" class="input_field" type="text" name="input-name"
+                                                title="Inpit title" placeholder="Enter your full name">
+                                        </div>
+                                        <div class="input_container">
+                                            <label for="password_field" class="input_label">Card Number</label>
+                                            <input id="password_field" class="input_field" type="number"
+                                                name="input-name" title="Inpit title" placeholder="0000 0000 0000 0000">
+                                        </div>
+                                        <div class="input_container">
+                                            <label for="password_field" class="input_label">Expiry Date / CVV</label>
+                                            <div class="split">
+                                                <input id="password_field" class="input_field" type="text"
+                                                    name="input-name" title="Expiry Date" placeholder="01/23">
+                                                <input id="password_field" class="input_field" type="number" name="cvv"
+                                                    title="CVV" placeholder="CVV">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="purchase--btn">Checkout</button>
+                                </form>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -115,7 +148,7 @@
 
 
     <div class="overlay hidden"></div>
-    
+
     <!-- =========== Scripts =========  -->
     <script src="./detalleCliente.js" type="module"></script>
 

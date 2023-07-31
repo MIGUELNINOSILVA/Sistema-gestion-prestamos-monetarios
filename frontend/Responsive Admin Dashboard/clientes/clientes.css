@@ -82,5 +82,11 @@ button:hover {
     width: 30%;
 }
 
-/* Modal */
+.details-all{
+    width: 100%;
+}
 
+a{
+    text-decoration: none;
+    color: #fff;
+}

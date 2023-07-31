@@ -4,7 +4,7 @@ import {
 
 const nombreClienteTitle = document.getElementById('nombreClienteTitle');
 document.addEventListener('DOMContentLoaded', loadData());
-
+const titleForm = document.getElementById('titleForm');
 
 
 async function loadData() {
@@ -15,10 +15,11 @@ async function loadData() {
         const cliente = await getOneClientes(clienteId);
         console.log(cliente);
 
-        nombreClienteTitle.textContent = `${cliente.nombre} `;
+        nombreClienteTitle.textContent = `${cliente.nombre}`;
+        titleForm.textContent = `${cliente.nombre}`;
     } catch (error) {
         console.log(error);
-    }finally{
+    } finally {
         // Ocultar el indicador de carga una vez que se complete la función
         loading.style.display = 'none';
     };
