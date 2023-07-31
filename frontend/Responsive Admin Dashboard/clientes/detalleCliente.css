@@ -1,5 +1,11 @@
 .recentOrders{
-    width: 100%!important;
+    width: 50%!important;
+}
+
+.details-all{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal {
@@ -85,7 +91,7 @@
 
 .split {
     display: grid;
-    grid-template-columns: 4fr 2fr;
+    grid-template-columns: 2fr 2fr;
     gap: 15px;
 }
 
