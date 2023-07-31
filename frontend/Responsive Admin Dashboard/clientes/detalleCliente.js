@@ -1,5 +1,7 @@
+
 import {
-    getOneClientes
+    getOneClientes,
+    updateClientes
 } from "../Responsive Admin Dashboard - final/assets/js/API.js";
 
 /* Selectores */
@@ -11,6 +13,7 @@ const identificacionClienteFormulario = document.getElementById('identificacionC
 const telefonoClienteFormulario = document.getElementById('telefonoClienteFormulario');
 const emailClienteFormulario = document.getElementById('emailClienteFormulario');
 const direccionClienteFormulario = document.getElementById('direccionClienteFormulario');
+const formUpdateClientes = document.getElementById('formUpdateClientes');
 
 async function loadData() {
     try {
@@ -27,6 +30,24 @@ async function loadData() {
         telefonoClienteFormulario.value = `${cliente.telefono}`;
         emailClienteFormulario.value = `${cliente.mail}`;
         direccionClienteFormulario.value = `${cliente.direccion}`;
+
+
+        formUpdateClientes.addEventListener('submit', async(e) => {
+            e.preventDefault();
+            const objetoActualizar = {
+                nombre: nombreClienteFormulario.value,
+                identificacion: identificacionClienteFormulario.value,
+                telefono: telefonoClienteFormulario.value,
+                mail:emailClienteFormulario.value,
+                direccion : direccionClienteFormulario.value
+            }
+            console.log(objetoActualizar);
+            
+            if (await updateClientes(clienteId, objetoActualizar)) {
+                alert('Actualizado Cliente Correctamente');
+                window.location = "./clientes.html";
+            }
+        })
     } catch (error) {
         console.log(error);
     } finally {

@@ -24,6 +24,19 @@ const getOneClientes = async(id) => {
     
 }
 
+const updateClientes = async(id, data) => {
+    try {
+        const req = await fetch(`${clientesApi}/update/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        return req.json();
+    } catch (error) {
+        console.log(error);
+    };
+    
+}
 // Prestamos
 const getPrestamos = async() => {
     try {
@@ -39,5 +52,6 @@ const getPrestamos = async() => {
 export{
     getClientes,
     getPrestamos,
-    getOneClientes
+    getOneClientes,
+    updateClientes
 }
