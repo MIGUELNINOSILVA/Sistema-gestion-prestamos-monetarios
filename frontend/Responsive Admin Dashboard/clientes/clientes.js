@@ -38,9 +38,8 @@ async function loadContent() {
                 <td>${telefono}</td>
                 <td>${cantidadPrestamosActivos}</td>
                 <td>${cantidadPrestamos}</td>
-                <td><button onclick="detailsClient('${_id}')">Detalles</button></td>
+                <td><button><a href="detalleCliente.html?id=${_id}">Detalle</a></button></td>
                 <td><button class="delete">Eliminar</button></td>
-                <td><button class="open-modal" id="${_id}">Abrir Modal</button></td>
 
             </tr>
             `;

@@ -13,6 +13,17 @@ const getClientes = async() => {
     
 }
 
+const getOneClientes = async(id) => {
+    try {
+        const req = await fetch(`${clientesApi}/${id}`);
+        const data = await req.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    };
+    
+}
+
 // Prestamos
 const getPrestamos = async() => {
     try {
@@ -27,5 +38,6 @@ const getPrestamos = async() => {
 
 export{
     getClientes,
-    getPrestamos
+    getPrestamos,
+    getOneClientes
 }

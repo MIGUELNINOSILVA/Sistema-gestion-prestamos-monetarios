@@ -12,7 +12,7 @@ const getCliente = async (req, res) => {
 
 const getOneCliente = async (req, res) => {
     try {
-        const cliente = await Client.findOne({
+        const cliente = await Cliente.findOne({
             _id: req.params.id
         });
         res.json(cliente);
