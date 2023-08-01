@@ -82,12 +82,22 @@ button:hover {
     width: 30%;
 }
 
-.details-all{
+.details-all {
     width: 100%;
     height: 90vh;
 }
 
-a{
+a {
     text-decoration: none;
     color: #fff;
+}
+
+@media(max-width: 1500px) {
+    .details-clientes {
+        width: 100%;
+    }
+    
+    .details-resumen {
+        width: 100%;
+    }
 }

@@ -55,16 +55,30 @@ async function loadContent() {
         const botonModal = document.querySelectorAll('.open-modal');
         const deleteCliente = document.querySelectorAll('.delete-cliente');
         deleteCliente.forEach(eliminar => {
-            eliminar.addEventListener('click',async(e)=>{
-                deleteClientes(e.target.id)
-                if(window.confirm('¿Estás seguro de eliminar este cliente?')) {
-                    console.log("Autorizo");
+            eliminar.addEventListener('click', async (e) => {
+                if (window.confirm('¿Estás seguro de eliminar este cliente?')) {
+                    const clientesPrestado = clientes.filter(cliente => cliente._id === e.target.id);
+                    console.log(clientesPrestado);
+                    const prestamosCliente = prestamos.filter(prestamo => prestamo.idCliente === e.target.id);
+                    console.log(prestamosCliente);
+                    if (prestamosCliente.length > 0) {
+                        alert("No se puede borrar porque tiene prestamos vinculados");
+                        return;
+                    } else {
+                        console.log("Borrar, no tiene prestamos vinculados");
+                        deleteClientes(e.target.id);
+                        // Recarga la página después de 2 segundos (2000 milisegundos)
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    }
+
                 }
             });
         });
         botonModal.forEach(boton => {
-            boton.addEventListener('click', (e)=>{
-                
+            boton.addEventListener('click', (e) => {
+
             })
         });
     } catch (error) {
