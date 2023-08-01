@@ -2,26 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lend Wise - Nuevo  Prestamo</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lend Wise - Nuevo Préstamo</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../Responsive Admin Dashboard - final/assets/css/style.css">
-    <link rel="shortcut icon" href="../Responsive Admin Dashboard - final//assets/imgs/logoLendWise.jpeg
-    " type="image/x-icon">
+    <link rel="shortcut icon" href="../Responsive Admin Dashboard - final/assets/imgs/logoLendWise.jpeg"
+        type="image/x-icon" />
+    <link rel="stylesheet" href="../Responsive Admin Dashboard - final/assets/css/style.css" />
+    <link rel="stylesheet" href="./nuevoPrestamos.css" />
+    <link rel="stylesheet" href="./detalleCliente.css">
 </head>
 
 <body>
     <!-- =============== Navigation ================ -->
-    <div class="container">
+
+    <div class="container-main">
         <div class="navigation">
             <ul>
                 <li>
                     <a href="#">
                         <span class="icon">
                             <div class="box-logo">
-                                <img src="../Responsive Admin Dashboard - final//assets/imgs/lendWiseWithoutbg.png" alt="" width="100%%" height="100%">
+                                <img src="../Responsive Admin Dashboard - final/assets/imgs/lendWiseWithoutbg.png"
+                                    alt="" width="100%%" height="100%" />
                             </div>
                         </span>
                         <h2 class="title">Lend Wise</h2>
@@ -83,227 +87,82 @@
 
                 <div class="search">
                     <label>
-                        <input type="text" placeholder="Search here">
+                        <input type="text" placeholder="Filtrar Cliente" />
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
 
                 <div class="user">
-                    <img src="assets/imgs/customer01.jpg" alt="">
-                </div>
-            </div>
-
-            <!-- ======================= Cards ================== -->
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
-                    </div>
+                    <img src="assets/imgs/customer01.jpg" alt="" />
                 </div>
             </div>
 
             <!-- ================ Order Details List ================= -->
-            <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Recent Orders</h2>
-                        <a href="#" class="btn">View All</a>
+            <div class="contenedor">
+                <div class="details details-all">
+                    <div class="recentOrders">
+                        <h2>Agregar - <span id="nombreClienteTitle">Préstamo </span></h2>
+                        <div class="loader" id="loading">
+                            <li class="ball"></li>
+                            <li class="ball"></li>
+                            <li class="ball"></li>
+                        </div>
+                        <div class="modal">
+                            <form class="form" id="formAddPrestamos">
+                                <div class="separator">
+                                    <hr class="line">
+                                    <p id="titleForm"></p>
+                                    <hr class="line">
+                                </div>
+                                <div class="credit-card-info--form">
+                                    <div class="input_container">
+                                        <label for="buscador">Buscar Cliente:</label>
+                                        <input type="text" id="buscador" placeholder="Escribe para buscar" class="input_field">
+
+                                        <select id="selectOpciones" class="input_field">
+                                        </select>
+
+                                    </div>
+                                    <div class="input_container">
+                                        <label for="montoPrestamosFormulario" class="input_label">Monto</label>
+                                        <input id="montoPrestamosFormulario" class="input_field" type="number"
+                                            name="input-name" title="Inpit title" placeholder="Ingresa el monto">
+                                    </div>
+                                    <div class="input_container">
+                                        <label for="tasaInteresPrestamosFormulario" class="input_label">Tasa Interés
+                                            %</label>
+                                        <input id="tasaInteresPrestamosFormulario" class="input_field" type="number"
+                                            name="input-name" title="Inpit title" placeholder="Tasa Interés">
+                                    </div>
+                                    <div class="input_container">
+                                        <label for="fInicioPrestamosFormulario" class="input_label">Fecha Inicio</label>
+                                        <input id="fInicioPrestamosFormulario" class="input_field" type="date"
+                                            name="input-name" title="Inpit title" placeholder="Fecha Inicio">
+                                    </div>
+                                    <div class="input_container">
+                                        <label for="fFinalPrestamosFormulario" class="input_label">Fecha Final</label>
+                                        <input id="fFinalPrestamosFormulario" class="input_field" type="date"
+                                            name="input-name" title="Inpit title" placeholder="Fecha Final ">
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 1rem;">
+                                    <button class="purchase--btn" type="submit">Guardar</button>
+                                    <button class="purchase--btn"><a href="./clientes.html">Cancelar</a></button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Payment</td>
-                                <td>Status</td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Recent Customers</h2>
-                    </div>
-
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-                    </table>
                 </div>
             </div>
         </div>
     </div>
 
+
+
+    <div class="overlay hidden"></div>
+
     <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
+    <script src="./nuevoPrestamos.js" type="module"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
