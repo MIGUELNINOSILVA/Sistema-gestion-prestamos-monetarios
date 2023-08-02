@@ -99,8 +99,8 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
             console.log(totalCuotaFinal);
             
-            /* totalPrestamosFormulario.value = cuotaSemanal;
-            totalPrestamosFormulario.textContent = cuotaSemanal; */
+            totalPrestamosFormulario.value = totalCuotaFinal;
+            totalPrestamosFormulario.textContent = totalCuotaFinal;
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'quincenal') {
             console.log("quincenal");
@@ -121,6 +121,8 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/2);
             const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
             console.log(totalCuotaFinal);
+            totalPrestamosFormulario.value = totalCuotaFinal;
+            totalPrestamosFormulario.textContent = totalCuotaFinal;
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'mensual') {
             console.log("mensual");
@@ -141,6 +143,8 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/1);
             const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
             console.log(totalCuotaFinal);
+            totalPrestamosFormulario.value = totalCuotaFinal;
+            totalPrestamosFormulario.textContent = totalCuotaFinal;
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'unico') {
             console.log("unico");
@@ -156,8 +160,12 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const month = (fechaInicio.getMonth() + 1).toString().padStart(2, '0');
             const day = fechaInicio.getDate().toString().padStart(2, '0');
             const nuevaFecha = `${year}-${month}-${day}`;
-            fFinalPrestamosFormulario.value = nuevaFecha;
-            console.log(fFinalPrestamosFormulario.value);
+            const totalInteres = (parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value)/100);
+            const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/1);
+            const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
+            console.log(totalCuotaFinal);
+            totalPrestamosFormulario.value = totalCuotaFinal;
+            totalPrestamosFormulario.textContent = totalCuotaFinal;
         }
 
     }
