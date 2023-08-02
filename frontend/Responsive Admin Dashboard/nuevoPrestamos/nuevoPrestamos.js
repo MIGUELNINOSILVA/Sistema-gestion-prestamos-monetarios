@@ -117,9 +117,10 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const day = fechaInicio.getDate().toString().padStart(2, '0');
             const nuevaFecha = `${year}-${month}-${day}`;
             fFinalPrestamosFormulario.value = nuevaFecha;
-            const totalPrestamo = (((parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value))/100)+parseInt(montoPrestamosFormulario.value))/2;
-            totalPrestamosFormulario.value = totalPrestamo;
-            totalPrestamosFormulario.textContent = totalPrestamo;
+            const totalInteres = (parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value)/100);
+            const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/2);
+            const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
+            console.log(totalCuotaFinal);
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'mensual') {
             console.log("mensual");
@@ -136,9 +137,10 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const day = fechaInicio.getDate().toString().padStart(2, '0');
             const nuevaFecha = `${year}-${month}-${day}`;
             fFinalPrestamosFormulario.value = nuevaFecha;
-            const totalPrestamo = (((parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value))/100)+parseInt(montoPrestamosFormulario.value));
-            totalPrestamosFormulario.value = totalPrestamo;
-            totalPrestamosFormulario.textContent = totalPrestamo;
+            const totalInteres = (parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value)/100);
+            const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/1);
+            const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
+            console.log(totalCuotaFinal);
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'unico') {
             console.log("unico");
