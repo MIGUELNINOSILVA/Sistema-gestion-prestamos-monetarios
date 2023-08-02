@@ -1,19 +1,4 @@
-console.log({
-    "_id": {
-        "$oid": "64c6b823aaafef6963b15a03"
-    },
-    "idCliente": "64be7cdeee349e0e4529c7f3",
-    "frecuenciaPago": "diario",
-    "fechaInicio": "01-01-2023",
-    "fechaFin": "01-02-2023",
-    "monto": 150000,
-    "tasaInteres": 20,
-    "interes": 30000,
-    "total": 180000,
-    "cantidadCuotas": 30,
-    "valorCuota": 6000,
-    "estado": true
-});
+
 import {
     getClientes
 } from '../Responsive Admin Dashboard - final/assets/js/API.js'
@@ -49,6 +34,7 @@ const fInicioPrestamosFormulario = document.getElementById('fInicioPrestamosForm
 const fFinalPrestamosFormulario = document.getElementById('fFinalPrestamosFormulario');
 const frecuenciaPagoPrestamosFormulario = document.getElementById('frecuenciaPagoPrestamosFormulario');
 const tiempoPrestamosFormulario = document.getElementById('tiempoPrestamosFormulario')
+const totalPrestamosFormulario = document.getElementById('totalPrestamosFormulario');
 
 tasaInteresPrestamosFormulario.addEventListener('input', (e) => {
     const valor = (e.target.value).match(/[0-9]/g);
@@ -58,37 +44,108 @@ tasaInteresPrestamosFormulario.addEventListener('input', (e) => {
     }
 });
 
-for (let i = 0; i < 12; i++) {
-    tiempoPrestamosFormulario.innerHTML+=`
+for (let i = 0; i < 24; i++) {
+    tiempoPrestamosFormulario.innerHTML += `
         <option value="${i+1}" selected>${i+1} Mes</option>
     `;
-    
+
 }
 
-fInicioPrestamosFormulario.addEventListener('input', (e) => {
+/* fInicioPrestamosFormulario.addEventListener('input', (e) => {
     if (fInicioPrestamosFormulario.value != '') {
         fFinalPrestamosFormulario.disabled = false;
     }
-});
+}); */
 
 frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
     if (frecuenciaPagoPrestamosFormulario.value != 'seleccionar') {
         if (frecuenciaPagoPrestamosFormulario.value === 'diario') {
             console.log("diario");
-            const diasFrecuencia = (fFinalPrestamosFormulario.value - fInicioPrestamosFormulario.value);
-            console.log(diasFrecuencia);
+            // Paso 1: Parsear fInicioPrestamosFormulario.value a un objeto Date
+            const fechaInicio = new Date(fInicioPrestamosFormulario.value);
+
+            // Paso 2: Calcular la nueva fecha sumando los días requeridos
+            const diasMes = 30 * tiempoPrestamosFormulario.value;
+            fechaInicio.setDate(fechaInicio.getDate() + diasMes);
+
+            // Paso 3: Formatear la nueva fecha y actualizar el campo fFinalPrestamosFormulario
+            const year = fechaInicio.getFullYear();
+            const month = (fechaInicio.getMonth() + 1).toString().padStart(2, '0');
+            const day = fechaInicio.getDate().toString().padStart(2, '0');
+            const nuevaFecha = `${year}-${month}-${day}`;
+            fFinalPrestamosFormulario.value = nuevaFecha;
+            const totalPrestamo = ((parseFloat(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value * tiempoPrestamosFormulario.value))/100)+parseFloat(montoPrestamosFormulario.value)*tiempoPrestamosFormulario.value;
+            totalPrestamosFormulario.value = totalPrestamo;
+            totalPrestamosFormulario.textContent = totalPrestamo;
+
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'semanal') {
             console.log("semanal");
+            // Paso 1: Parsear fInicioPrestamosFormulario.value a un objeto Date
+            const fechaInicio = new Date(fInicioPrestamosFormulario.value);
+
+            // Paso 2: Calcular la nueva fecha sumando los días requeridos
+            const diasMes = 30 * tiempoPrestamosFormulario.value;
+            fechaInicio.setDate(fechaInicio.getDate() + diasMes);
+
+            // Paso 3: Formatear la nueva fecha y actualizar el campo fFinalPrestamosFormulario
+            const year = fechaInicio.getFullYear();
+            const month = (fechaInicio.getMonth() + 1).toString().padStart(2, '0');
+            const day = fechaInicio.getDate().toString().padStart(2, '0');
+            const nuevaFecha = `${year}-${month}-${day}`;
+            fFinalPrestamosFormulario.value = nuevaFecha;
+            console.log(fFinalPrestamosFormulario.value);
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'quincenal') {
             console.log("quincenal");
+            // Paso 1: Parsear fInicioPrestamosFormulario.value a un objeto Date
+            const fechaInicio = new Date(fInicioPrestamosFormulario.value);
+
+            // Paso 2: Calcular la nueva fecha sumando los días requeridos
+            const diasMes = 30 * tiempoPrestamosFormulario.value;
+            fechaInicio.setDate(fechaInicio.getDate() + diasMes);
+
+            // Paso 3: Formatear la nueva fecha y actualizar el campo fFinalPrestamosFormulario
+            const year = fechaInicio.getFullYear();
+            const month = (fechaInicio.getMonth() + 1).toString().padStart(2, '0');
+            const day = fechaInicio.getDate().toString().padStart(2, '0');
+            const nuevaFecha = `${year}-${month}-${day}`;
+            fFinalPrestamosFormulario.value = nuevaFecha;
+            console.log(fFinalPrestamosFormulario.value);
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'mensual') {
             console.log("mensual");
+            // Paso 1: Parsear fInicioPrestamosFormulario.value a un objeto Date
+            const fechaInicio = new Date(fInicioPrestamosFormulario.value);
+
+            // Paso 2: Calcular la nueva fecha sumando los días requeridos
+            const diasMes = 30 * tiempoPrestamosFormulario.value;
+            fechaInicio.setDate(fechaInicio.getDate() + diasMes);
+
+            // Paso 3: Formatear la nueva fecha y actualizar el campo fFinalPrestamosFormulario
+            const year = fechaInicio.getFullYear();
+            const month = (fechaInicio.getMonth() + 1).toString().padStart(2, '0');
+            const day = fechaInicio.getDate().toString().padStart(2, '0');
+            const nuevaFecha = `${year}-${month}-${day}`;
+            fFinalPrestamosFormulario.value = nuevaFecha;
+            console.log(fFinalPrestamosFormulario.value);
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'unico') {
             console.log("unico");
+            // Paso 1: Parsear fInicioPrestamosFormulario.value a un objeto Date
+            const fechaInicio = new Date(fInicioPrestamosFormulario.value);
+
+            // Paso 2: Calcular la nueva fecha sumando los días requeridos
+            const diasMes = 30 * tiempoPrestamosFormulario.value;
+            fechaInicio.setDate(fechaInicio.getDate() + diasMes);
+
+            // Paso 3: Formatear la nueva fecha y actualizar el campo fFinalPrestamosFormulario
+            const year = fechaInicio.getFullYear();
+            const month = (fechaInicio.getMonth() + 1).toString().padStart(2, '0');
+            const day = fechaInicio.getDate().toString().padStart(2, '0');
+            const nuevaFecha = `${year}-${month}-${day}`;
+            fFinalPrestamosFormulario.value = nuevaFecha;
+            console.log(fFinalPrestamosFormulario.value);
         }
 
     }
@@ -99,7 +156,7 @@ const completeForm = (clienteSeleccionado) => {
     console.log(tasaInteresPrestamosFormulario.value);
     console.log(montoPrestamosFormulario.value);
 
-    
+
 }
 
 

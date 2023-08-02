@@ -117,7 +117,8 @@
                                 <div class="credit-card-info--form">
                                     <div class="input_container">
                                         <label for="buscador">Buscar Cliente:</label>
-                                        <input type="text" id="buscador" placeholder="Escribe para buscar" class="input_field">
+                                        <input type="text" id="buscador" placeholder="Escribe para buscar"
+                                            class="input_field">
 
                                         <select id="selectOpciones" class="input_field">
                                             <option value="seleccionar" selected>Seleccionar</option>
@@ -127,7 +128,8 @@
                                     <div class="input_container">
                                         <label for="montoPrestamosFormulario" class="input_label">Monto</label>
                                         <input id="montoPrestamosFormulario" class="input_field" type="number"
-                                            name="input-name" title="Inpit title" placeholder="Ingresa el monto" required>
+                                            name="input-name" title="Inpit title" placeholder="Ingresa el monto"
+                                            required>
                                     </div>
                                     <div class="input_container">
                                         <label for="tasaInteresPrestamosFormulario" class="input_label">Tasa Interés
@@ -136,12 +138,20 @@
                                             name="input-name" title="Inpit title" placeholder="Tasa Interés">
                                     </div>
                                     <div class="input_container">
-                                        <label for="tiempoPrestamosFormulario" class="input_label">Tiempo de pago</label>
-                                            <select id="tiempoPrestamosFormulario" class="input_field">
-                                            </select>
+                                        <label for="tiempoPrestamosFormulario" class="input_label">Tiempo de
+                                            pago</label>
+                                        <select id="tiempoPrestamosFormulario" class="input_field">
+                                            <option value="seleccionar" selected>Seleccionar</option>
+                                        </select>
                                     </div>
                                     <div class="input_container">
-                                        <label for="frecuenciaPagoPrestamosFormulario" class="input_label">Frecuencia De Pago</label>
+                                        <label for="fInicioPrestamosFormulario" class="input_label">Fecha Inicio</label>
+                                        <input id="fInicioPrestamosFormulario" class="input_field" type="date"
+                                            name="input-name" title="Inpit title" placeholder="Fecha Inicio">
+                                    </div>
+                                    <div class="input_container">
+                                        <label for="frecuenciaPagoPrestamosFormulario" class="input_label">Frecuencia De
+                                            Pago</label>
                                         <select id="frecuenciaPagoPrestamosFormulario" class="input_field">
                                             <option value="seleccionar" selected>Seleccionar</option>
                                             <option value="diario" selected>Diario</option>
@@ -152,15 +162,19 @@
                                         </select>
                                     </div>
                                     <div class="input_container">
-                                        <label for="fInicioPrestamosFormulario" class="input_label">Fecha Inicio</label>
-                                        <input id="fInicioPrestamosFormulario" class="input_field" type="date"
-                                            name="input-name" title="Inpit title" placeholder="Fecha Inicio">
-                                    </div>
-                                    <div class="input_container">
                                         <label for="fFinalPrestamosFormulario" class="input_label">Fecha Final</label>
                                         <input id="fFinalPrestamosFormulario" class="input_field" type="date"
-                                            name="input-name" title="Inpit title" placeholder="Fecha Final " disabled="true">
+                                            name="input-name" title="Inpit title" placeholder="Fecha Final "
+                                            disabled="true">
                                     </div>
+                                    <div class="input_container">
+                                        <label for="totalPrestamosFormulario" class="input_label">Monto con el interés puesto MENSUAL</label>
+                                        <input id="totalPrestamosFormulario" class="input_field" type="number"
+                                            name="input-name" title="Inpit title" placeholder="Monto parcial con interes"
+                                            disabled="true">
+                                    </div>
+                                    
+
                                 </div>
                                 <div style="display: flex; gap: 1rem;">
                                     <button class="purchase--btn" type="submit">Guardar</button>
