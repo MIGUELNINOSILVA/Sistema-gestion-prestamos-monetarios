@@ -74,7 +74,9 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const day = fechaInicio.getDate().toString().padStart(2, '0');
             const nuevaFecha = `${year}-${month}-${day}`;
             fFinalPrestamosFormulario.value = nuevaFecha;
-            const totalPrestamo = ((parseFloat(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value * tiempoPrestamosFormulario.value))/100)+parseFloat(montoPrestamosFormulario.value)*tiempoPrestamosFormulario.value;
+            const totalPrestamo = (((parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value * tiempoPrestamosFormulario.value))/100)+parseInt(montoPrestamosFormulario.value))/diasMes;
+            const totalPrestamoFormateado = totalPrestamo.toLocaleString('es-ES'); // Cambia 'es-ES' según tus preferencias regionales
+            console.log(`Total prestamo ${totalPrestamoFormateado}`);
             totalPrestamosFormulario.value = totalPrestamo;
             totalPrestamosFormulario.textContent = totalPrestamo;
 
