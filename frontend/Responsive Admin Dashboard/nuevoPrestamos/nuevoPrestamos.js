@@ -94,9 +94,13 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const day = fechaInicio.getDate().toString().padStart(2, '0');
             const nuevaFecha = `${year}-${month}-${day}`;
             fFinalPrestamosFormulario.value = nuevaFecha;
-            const totalPrestamo = (((parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value * tiempoPrestamosFormulario.value))/100)+parseInt(montoPrestamosFormulario.value))/4;
-            totalPrestamosFormulario.value = totalPrestamo;
-            totalPrestamosFormulario.textContent = totalPrestamo;
+            const totalInteres = (parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value)/100);
+            const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/4);
+            const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
+            console.log(totalCuotaFinal);
+            
+            /* totalPrestamosFormulario.value = cuotaSemanal;
+            totalPrestamosFormulario.textContent = cuotaSemanal; */
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'quincenal') {
             console.log("quincenal");
