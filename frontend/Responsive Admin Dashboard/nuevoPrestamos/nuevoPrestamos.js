@@ -20,7 +20,6 @@ import {
 
 document.addEventListener('DOMContentLoaded', loadContent());
 const selectOpciones = document.getElementById('selectOpciones');
-const montoPrestamosFormulario = document.getElementById('montoPrestamosFormulario');
 
 async function loadContent() {
     try {
@@ -38,12 +37,71 @@ async function loadContent() {
 
     } catch (error) {
         console.log(error);
+    } finally {
+        // Ocultar el indicador de carga una vez que se complete la función
+        loading.style.display = 'none';
     };
 };
-const completeForm = (clienteSeleccionado) => {
-    console.log(clienteSeleccionado);
+/* Selectores formulario */
+const montoPrestamosFormulario = document.getElementById('montoPrestamosFormulario');
+const tasaInteresPrestamosFormulario = document.getElementById('tasaInteresPrestamosFormulario');
+const fInicioPrestamosFormulario = document.getElementById('fInicioPrestamosFormulario');
+const fFinalPrestamosFormulario = document.getElementById('fFinalPrestamosFormulario');
+const frecuenciaPagoPrestamosFormulario = document.getElementById('frecuenciaPagoPrestamosFormulario');
+const tiempoPrestamosFormulario = document.getElementById('tiempoPrestamosFormulario')
+
+tasaInteresPrestamosFormulario.addEventListener('input', (e) => {
+    const valor = (e.target.value).match(/[0-9]/g);
+
+    if (valor.length > 3) {
+        e.target.value = '0';
+    }
+});
+
+for (let i = 0; i < 12; i++) {
+    tiempoPrestamosFormulario.innerHTML+=`
+        <option value="${i+1}" selected>${i+1} Mes</option>
+    `;
     
 }
+
+fInicioPrestamosFormulario.addEventListener('input', (e) => {
+    if (fInicioPrestamosFormulario.value != '') {
+        fFinalPrestamosFormulario.disabled = false;
+    }
+});
+
+frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
+    if (frecuenciaPagoPrestamosFormulario.value != 'seleccionar') {
+        if (frecuenciaPagoPrestamosFormulario.value === 'diario') {
+            console.log("diario");
+            const diasFrecuencia = (fFinalPrestamosFormulario.value - fInicioPrestamosFormulario.value);
+            console.log(diasFrecuencia);
+        }
+        if (frecuenciaPagoPrestamosFormulario.value === 'semanal') {
+            console.log("semanal");
+        }
+        if (frecuenciaPagoPrestamosFormulario.value === 'quincenal') {
+            console.log("quincenal");
+        }
+        if (frecuenciaPagoPrestamosFormulario.value === 'mensual') {
+            console.log("mensual");
+        }
+        if (frecuenciaPagoPrestamosFormulario.value === 'unico') {
+            console.log("unico");
+        }
+
+    }
+});
+
+const completeForm = (clienteSeleccionado) => {
+    console.log(clienteSeleccionado);
+    console.log(tasaInteresPrestamosFormulario.value);
+    console.log(montoPrestamosFormulario.value);
+
+    
+}
+
 
 document.getElementById("buscador").addEventListener("input", function () {
     let input, filter, select, option, i;
