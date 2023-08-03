@@ -59,6 +59,7 @@ for (let i = 0; i < 24; i++) {
 let interesCantidad;
 let totalPagar;
 let cantidadCuotasTotal;
+let valorCuotaTotal;
 frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
     if (frecuenciaPagoPrestamosFormulario.value != 'seleccionar') {
         if (frecuenciaPagoPrestamosFormulario.value === 'diario') {
@@ -85,6 +86,7 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             let cantidadCuotasDentro = diasMes;
             cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalPrestamo;
+            valorCuotaTotal = totalPrestamo;
 
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'semanal') {
@@ -113,6 +115,7 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             let cantidadCuotasDentro = (diasMes*4)/30;
             cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalCuotaFinal;
+            valorCuotaTotal = totalCuotaFinal;
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'quincenal') {
             console.log("quincenal");
@@ -140,6 +143,7 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             let cantidadCuotasDentro = (diasMes*2)/30;
             cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalCuotaFinal;
+            valorCuotaTotal = totalCuotaFinal;
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'mensual') {
             console.log("mensual");
@@ -167,6 +171,7 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             let cantidadCuotasDentro = (diasMes)/30;
             cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalCuotaFinal;
+            valorCuotaTotal = totalCuotaFinal;
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'unico') {
             console.log("unico");
@@ -193,6 +198,7 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             let cantidadCuotasDentro = (diasMes)/30;
             cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalCuotaFinal;
+            valorCuotaTotal = totalCuotaFinal;
         }
 
     }
@@ -217,7 +223,9 @@ formAddPrestamos.addEventListener('submit', (e)=>{
         tasaInteres: parseInt(tasaInteresPrestamosFormulario.value),
         interes : interesCantidad,
         total: totalPagar,
-        cantidadCuotas : cantidadCuotasTotal
+        cantidadCuotas : cantidadCuotasTotal,
+        valorCuota: valorCuotaTotal,
+        estado: true
     };
     console.log(dataSend);
 })
