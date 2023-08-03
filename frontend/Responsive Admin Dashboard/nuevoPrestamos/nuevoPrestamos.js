@@ -56,7 +56,9 @@ for (let i = 0; i < 24; i++) {
         fFinalPrestamosFormulario.disabled = false;
     }
 }); */
-
+let interesCantidad;
+let totalPagar;
+let cantidadCuotasTotal;
 frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
     if (frecuenciaPagoPrestamosFormulario.value != 'seleccionar') {
         if (frecuenciaPagoPrestamosFormulario.value === 'diario') {
@@ -75,7 +77,13 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const nuevaFecha = `${year}-${month}-${day}`;
             fFinalPrestamosFormulario.value = nuevaFecha;
             const totalPrestamo = (((parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value * tiempoPrestamosFormulario.value))/100)+parseInt(montoPrestamosFormulario.value))/diasMes;
+            let interesCantidadDentro = ((parseInt(montoPrestamosFormulario.value)*parseFloat(tasaInteresPrestamosFormulario.value))/100)*tiempoPrestamosFormulario.value;
+            interesCantidad = interesCantidadDentro;
+            let totalPagarDentro = interesCantidadDentro + parseInt(montoPrestamosFormulario.value);
+            totalPagar = totalPagarDentro;
             totalPrestamosFormulario.value = totalPrestamo;
+            let cantidadCuotasDentro = diasMes;
+            cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalPrestamo;
 
         }
@@ -97,9 +105,13 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const totalInteres = (parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value)/100);
             const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/4);
             const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
-            console.log(totalCuotaFinal);
-            
+            let interesCantidadDentro = ((parseInt(montoPrestamosFormulario.value)*parseFloat(tasaInteresPrestamosFormulario.value))/100)*tiempoPrestamosFormulario.value;
+            interesCantidad = interesCantidadDentro;
+            let totalPagarDentro = interesCantidadDentro + parseInt(montoPrestamosFormulario.value);
+            totalPagar = totalPagarDentro;
             totalPrestamosFormulario.value = totalCuotaFinal;
+            let cantidadCuotasDentro = (diasMes*4)/30;
+            cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalCuotaFinal;
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'quincenal') {
@@ -120,8 +132,13 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const totalInteres = (parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value)/100);
             const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/2);
             const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
-            console.log(totalCuotaFinal);
+            let interesCantidadDentro = ((parseInt(montoPrestamosFormulario.value)*parseFloat(tasaInteresPrestamosFormulario.value))/100)*tiempoPrestamosFormulario.value;
+            interesCantidad = interesCantidadDentro;
+            let totalPagarDentro = interesCantidadDentro + parseInt(montoPrestamosFormulario.value);
+            totalPagar = totalPagarDentro;
             totalPrestamosFormulario.value = totalCuotaFinal;
+            let cantidadCuotasDentro = (diasMes*2)/30;
+            cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalCuotaFinal;
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'mensual') {
@@ -142,8 +159,13 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const totalInteres = (parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value)/100);
             const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/1);
             const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
-            console.log(totalCuotaFinal);
+            let interesCantidadDentro = ((parseInt(montoPrestamosFormulario.value)*parseFloat(tasaInteresPrestamosFormulario.value))/100)*tiempoPrestamosFormulario.value;
+            interesCantidad = interesCantidadDentro;
+            let totalPagarDentro = interesCantidadDentro + parseInt(montoPrestamosFormulario.value);
+            totalPagar = totalPagarDentro;
             totalPrestamosFormulario.value = totalCuotaFinal;
+            let cantidadCuotasDentro = (diasMes)/30;
+            cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalCuotaFinal;
         }
         if (frecuenciaPagoPrestamosFormulario.value === 'unico') {
@@ -163,22 +185,42 @@ frecuenciaPagoPrestamosFormulario.addEventListener('change', (e) => {
             const totalInteres = (parseInt(montoPrestamosFormulario.value) * parseFloat(tasaInteresPrestamosFormulario.value)/100);
             const totalPagarConInteres = (((totalInteres * tiempoPrestamosFormulario.value) + parseInt(montoPrestamosFormulario.value))/1);
             const totalCuotaFinal = totalPagarConInteres / tiempoPrestamosFormulario.value
-            console.log(totalCuotaFinal);
+            let interesCantidadDentro = ((parseInt(montoPrestamosFormulario.value)*parseFloat(tasaInteresPrestamosFormulario.value))/100)*tiempoPrestamosFormulario.value;
+            interesCantidad = interesCantidadDentro;
+            let totalPagarDentro = interesCantidadDentro + parseInt(montoPrestamosFormulario.value);
+            totalPagar = totalPagarDentro;
             totalPrestamosFormulario.value = totalCuotaFinal;
+            let cantidadCuotasDentro = (diasMes)/30;
+            cantidadCuotasTotal = cantidadCuotasDentro;
             totalPrestamosFormulario.textContent = totalCuotaFinal;
         }
 
     }
 });
 
+let clienteSeleccionadoGlobal;
 const completeForm = (clienteSeleccionado) => {
-    console.log(clienteSeleccionado);
-    console.log(tasaInteresPrestamosFormulario.value);
-    console.log(montoPrestamosFormulario.value);
-
-
+    clienteSeleccionadoGlobal = clienteSeleccionado;
 }
 
+//Formulario ENVIAR DATA
+
+const formAddPrestamos = document.getElementById('formAddPrestamos');
+formAddPrestamos.addEventListener('submit', (e)=>{
+    e.preventDefault();//Evita que se envie el formulario al servidor
+    const dataSend = {
+        idCliente : clienteSeleccionadoGlobal._id,
+        monto: parseInt(montoPrestamosFormulario.value),
+        frecuenciaPago: frecuenciaPagoPrestamosFormulario.value,
+        fechaInicio: fInicioPrestamosFormulario.value,
+        fechaFin: fFinalPrestamosFormulario.value,
+        tasaInteres: parseInt(tasaInteresPrestamosFormulario.value),
+        interes : interesCantidad,
+        total: totalPagar,
+        cantidadCuotas : cantidadCuotasTotal
+    };
+    console.log(dataSend);
+})
 
 document.getElementById("buscador").addEventListener("input", function () {
     let input, filter, select, option, i;
