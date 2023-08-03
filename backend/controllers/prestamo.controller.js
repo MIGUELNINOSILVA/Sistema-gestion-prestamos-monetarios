@@ -10,7 +10,19 @@ const getPrestamos = async(req, res) => {
     };   
 }
 
+const addPrestamo = async (req, res) => {
+    const prestamo = new Prestamo(req.body);
+    try {
+
+        const nuevoPrestamo = await prestamo.save();
+        res.json(nuevoPrestamo);
+    } catch (error) {
+        res.status(500);
+        res.send(error);
+    };
+}
 
 export{
-    getPrestamos
+    getPrestamos,
+    addPrestamo
 }
