@@ -2,7 +2,7 @@ const clientesApi = "http://localhost:8002/api/clientes";
 const prestamosApi = "http://localhost:8002/api/prestamos";
 
 // Clientes
-const getClientes = async() => {
+const getClientes = async () => {
     try {
         const req = await fetch(clientesApi);
         const data = await req.json();
@@ -10,10 +10,10 @@ const getClientes = async() => {
     } catch (error) {
         console.log(error);
     };
-    
+
 }
 
-const getOneClientes = async(id) => {
+const getOneClientes = async (id) => {
     try {
         const req = await fetch(`${clientesApi}/${id}`);
         const data = await req.json();
@@ -21,28 +21,32 @@ const getOneClientes = async(id) => {
     } catch (error) {
         console.log(error);
     };
-    
+
 }
 
-const updateClientes = async(id, data) => {
+const updateClientes = async (id, data) => {
     try {
         const req = await fetch(`${clientesApi}/update/${id}`, {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data)
         });
         return req.json();
     } catch (error) {
         console.log(error);
     };
-    
+
 }
 
 const deleteClientes = async (id) => {
     try {
         const response = await fetch(`${clientesApi}/delete/${id}`, {
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
 
         // Verificar si la eliminación se realizó correctamente
@@ -60,18 +64,25 @@ const deleteClientes = async (id) => {
 };
 
 // Prestamos
-const getPrestamos = async() => {
+const getPrestamos = async () => {
     try {
-        const req  = await fetch(prestamosApi);
-        const data  = await req.json();
+        const req = await fetch(prestamosApi);
+        const data = await req.json();
         return data;
     } catch (error) {
         console.log(error);
     };
-    
 }
 
-export{
+// const addPrestamo = async (data) => {
+//     try {
+//         const req = await fetch(`${prestamosApiration}/add/${}`)
+//     } catch (error) {
+
+//     }
+// };
+
+export {
     getClientes,
     getPrestamos,
     getOneClientes,
