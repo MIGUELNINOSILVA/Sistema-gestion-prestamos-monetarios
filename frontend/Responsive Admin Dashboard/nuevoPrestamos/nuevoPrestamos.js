@@ -1,6 +1,7 @@
 
 import {
-    getClientes
+    getClientes,
+    addPrestamo
 } from '../Responsive Admin Dashboard - final/assets/js/API.js'
 
 document.addEventListener('DOMContentLoaded', loadContent());
@@ -212,7 +213,7 @@ const completeForm = (clienteSeleccionado) => {
 //Formulario ENVIAR DATA
 
 const formAddPrestamos = document.getElementById('formAddPrestamos');
-formAddPrestamos.addEventListener('submit', (e)=>{
+formAddPrestamos.addEventListener('submit', async(e)=>{
     e.preventDefault();//Evita que se envie el formulario al servidor
     const dataSend = {
         idCliente : clienteSeleccionadoGlobal._id,
@@ -228,6 +229,10 @@ formAddPrestamos.addEventListener('submit', (e)=>{
         estado: true
     };
     console.log(dataSend);
+    if (await addPrestamo(dataSend)) {
+        alert("Datos enviados correctamente");
+        window.location = "./nuevoPrestamos.html";
+    }
 })
 
 document.getElementById("buscador").addEventListener("input", function () {

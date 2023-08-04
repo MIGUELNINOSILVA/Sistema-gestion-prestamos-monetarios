@@ -74,18 +74,26 @@ const getPrestamos = async () => {
     };
 }
 
-// const addPrestamo = async (data) => {
-//     try {
-//         const req = await fetch(`${prestamosApiration}/add/${}`)
-//     } catch (error) {
+const addPrestamo = async (data) => {
+    try {
+        const req = await fetch(`${prestamosApi}/add`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        return req.json();
+    } catch (error) {
 
-//     }
-// };
+    }
+};
 
 export {
     getClientes,
     getPrestamos,
     getOneClientes,
     updateClientes,
-    deleteClientes
+    deleteClientes,
+    addPrestamo
 }
