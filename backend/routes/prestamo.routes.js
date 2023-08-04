@@ -6,7 +6,7 @@ import { getPrestamos, addPrestamo } from "../controllers/prestamo.controller.js
 const router = Router();
 
 router.get('/', getPrestamos);
-router.get('/add', [
+router.post('/add', [
     check("idCliente", "idCliente es obligatorio").not().isEmpty(),
     check("frecuenciaPago", "frecuenciaPago es obligatorio").not().isEmpty(),
     check("frecuenciaPago", "frecuenciaPago es obligatorio").not().isEmpty(),
@@ -16,7 +16,8 @@ router.get('/add', [
     check("tasaInteres", "tasaInteres es obligatorio").not().isEmpty(),
     check("interes", "interes es obligatorio").not().isEmpty(),
     check("cantidadCuotas", "cantidadCuotas es obligatorio").not().isEmpty(),
-    check("estado", "estado es obligatorio").not().isEmptyestado
+    check("estado", "estado es obligatorio").not().isEmpty(),
+    validateDocuments
 ],addPrestamo);
 
 export default router;
