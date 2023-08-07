@@ -24,6 +24,20 @@ const getOneClientes = async (id) => {
 
 }
 
+const addClientes = async(data)=>{ 
+    try {
+        const req = await fetch(`${clientesApi}`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const updateClientes = async (id, data) => {
     try {
         const req = await fetch(`${clientesApi}/update/${id}`, {
@@ -92,6 +106,7 @@ const addPrestamo = async (data) => {
 export {
     getClientes,
     getPrestamos,
+    addClientes,
     getOneClientes,
     updateClientes,
     deleteClientes,

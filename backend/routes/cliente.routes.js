@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/',getCliente);
 router.get('/:id', getOneCliente);
-router.post('/add',[
+router.post('/',[
     check("identificacion", "Identificación es obligatoria").not().isEmpty(),
     check("nombre", "Nombre es obligatorio").not().isEmpty(),
     check("telefono", "Telefono es obligatorio").not().isEmpty().isLength({ min: 9 }).withMessage("El teléfono debe tener al menos 9 dígitos."),
