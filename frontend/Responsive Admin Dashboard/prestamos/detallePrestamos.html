@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lend Wise - Detalle Préstamo</title>
+    <!-- ======= Styles ====== -->
+    <link rel="shortcut icon" href="../Responsive Admin Dashboard - final/assets/imgs/logoLendWise.jpeg"
+        type="image/x-icon" />
+    <link rel="stylesheet" href="../Responsive Admin Dashboard - final/assets/css/style.css" />
+    <link rel="stylesheet" href="./detallePrestamos.css">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+
+    <div class="container-main">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <div class="box-logo">
+                                <img src="../Responsive Admin Dashboard - final/assets/imgs/lendWiseWithoutbg.png"
+                                    alt="" width="100%%" height="100%" />
+                            </div>
+                        </span>
+                        <h2 class="title">Lend Wise</h2>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../Responsive Admin Dashboard - final/index.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../clientes/clientes.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../nuevoClientes/nuevoCliente.html">
+                        <span class="icon">
+                            <ion-icon name="people"></ion-icon>
+                        </span>
+                        <span class="title">Nuevo Cliente</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../nuevoPrestamos/nuevoPrestamos.html">
+                        <span class="icon">
+                            <ion-icon name="cash-outline"></ion-icon>
+                        </span>
+                        <span class="title">Nuevo Préstamo</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../prestamos/prestamos.html">
+                        <span class="icon">
+                            <ion-icon name="wallet-outline"></ion-icon>
+                        </span>
+                        <span class="title">Préstamos</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Filtrar Cliente" />
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="assets/imgs/customer01.jpg" alt="" />
+                </div>
+            </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="contenedor">
+                <div class="details details-all">
+                    <div class="recentOrders">
+                        <h2>Préstamo - <span id="numeroPrestamoTitle"></span></h2>
+                        <div class="loader" id="loading">
+                            <li class="ball"></li>
+                            <li class="ball"></li>
+                            <li class="ball"></li>
+                        </div>
+                            <div class="modal">
+                                <form class="form" id="detallePrestamos">
+                                    <div class="separator">
+                                        <hr class="line">
+                                        <p id="titleForm"></p>
+                                        <hr class="line">
+                                    </div>
+                                    
+                                    <div class="credit-card-info--form">
+                                        <div class="input_container">
+                                            <label for="nombreClienteFormulario" class="input_label">Nombre</label>
+                                            <input id="nombreClienteFormulario" class="input_field" type="text" name="input-name"
+                                                title="Inpit title" placeholder="Ingresa tu nombre">
+                                        </div>
+                                        <div class="input_container">
+                                            <label for="identificacionClienteFormulario" class="input_label">Identificación</label>
+                                            <input id="identificacionClienteFormulario" class="input_field" type="text" name="input-name"
+                                                title="Inpit title" placeholder="Identificación">
+                                        </div>
+                                        <div class="input_container">
+                                            <label for="telefonoClienteFormulario" class="input_label">Telefono</label>
+                                            <input id="telefonoClienteFormulario" class="input_field" type="text" name="input-name"
+                                                title="Inpit title" placeholder="Telefono">
+                                        </div>
+                                        <div class="input_container">
+                                            <label for="emailClienteFormulario" class="input_label">Email</label>
+                                            <input id="emailClienteFormulario" class="input_field" type="email" name="input-name"
+                                                title="Inpit title" placeholder="Email">
+                                        </div>
+                                        <div class="input_container">
+                                            <label for="direccionClienteFormulario" class="input_label">Dirección</label>
+                                            <input id="direccionClienteFormulario" class="input_field" type="text" name="input-name"
+                                                title="Inpit title" placeholder="Direccion">
+                                        </div>
+                                        
+                                    </div>
+                                    <div style="display: flex; gap: 1rem;">
+                                        <button class="purchase--btn" type="submit">Guardar</button>
+                                        <button class="purchase--btn"><a href="./clientes.html">Cancelar</a></button>
+                                    </div>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="overlay hidden"></div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="./detallePrestamos.js" type="module"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

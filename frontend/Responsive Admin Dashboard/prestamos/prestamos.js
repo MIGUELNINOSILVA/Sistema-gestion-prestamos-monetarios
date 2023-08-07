@@ -17,7 +17,7 @@ async function loadContent() {
             const cuotaFormateado = prestamo.valorCuota.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
             const totalFormateado = prestamo.total.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
             const identificacionClientes = clientes.find((cliente) => cliente._id === prestamo.idCliente);
-
+            
             tablaPrestamos.innerHTML += `
             <tr>
                 <td>${identificacionClientes.identificacion}</td>
@@ -29,6 +29,9 @@ async function loadContent() {
                 <td>${prestamo.tasaInteres}%</td>
                 <td>${cuotaFormateado}</td>
                 <td>${totalFormateado}</td>
+                <td>${prestamo.estado ? 'ACTIVO':'PAGO'}</td>
+                <td><button><a href="detallePrestamos.html?id=${prestamo._id}">Detalle</a></button></td>
+                <td><button class="delete delete-cliente" id="${prestamo._id}">Eliminar</button></td>
             </tr>`;
         });
     } catch (error) {

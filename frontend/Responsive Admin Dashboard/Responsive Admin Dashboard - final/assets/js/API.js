@@ -86,6 +86,17 @@ const getPrestamos = async () => {
     } catch (error) {
         console.log(error);
     };
+};
+
+const getOnePrestamos = async (id) => {
+    try {
+        const req = await fetch(`${prestamosApi}/${id}`);
+        const data = await req.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    };
+
 }
 
 const addPrestamo = async (data) => {
@@ -108,6 +119,7 @@ export {
     getPrestamos,
     addClientes,
     getOneClientes,
+    getOnePrestamos,
     updateClientes,
     deleteClientes,
     addPrestamo

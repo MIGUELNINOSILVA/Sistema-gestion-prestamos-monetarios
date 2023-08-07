@@ -1,11 +1,12 @@
 import {Router} from "express";
 import {check}  from "express-validator";
 import {validateDocuments} from "../middlewares/validate.documents.js";
-import { getPrestamos, addPrestamo } from "../controllers/prestamo.controller.js";
+import { getPrestamos, addPrestamo, getOnePrestamo } from "../controllers/prestamo.controller.js";
 
 const router = Router();
 
 router.get('/', getPrestamos);
+router.get('/:id', getOnePrestamo);
 router.post('/add', [
     check("idCliente", "idCliente es obligatorio").not().isEmpty(),
     check("frecuenciaPago", "frecuenciaPago es obligatorio").not().isEmpty(),

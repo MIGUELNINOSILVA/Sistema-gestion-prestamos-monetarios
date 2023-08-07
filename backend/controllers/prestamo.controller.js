@@ -22,7 +22,21 @@ const addPrestamo = async (req, res) => {
     };
 }
 
+const getOnePrestamo = async (req, res) => {
+    try {
+        const prestamo = await Prestamo.findOne({
+            _id: req.params.id
+        });
+        res.json(prestamo);
+    } catch (error) {
+        res.status(500);
+        res.send(error);
+    };
+
+}
+
 export{
     getPrestamos,
+    getOnePrestamo,
     addPrestamo
 }
