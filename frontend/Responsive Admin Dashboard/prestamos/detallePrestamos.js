@@ -3,10 +3,10 @@ import {
   getClientes,
   getCuotas,
   addCuotas,
-  updatePrestamo
+  updatePrestamo,
 } from "../Responsive Admin Dashboard - final/assets/js/API.js";
 
-document.addEventListener("DOMContentLoaded", loadContent());
+document.addEventListener("DOMContentLoaded", loadContent);
 
 // Selectores
 const numeroPrestamoTitle = document.getElementById("numeroPrestamoTitle");
@@ -36,15 +36,20 @@ async function loadContent() {
     console.log(cuotasCopia);
     let numeroMenor = Infinity;
     for (let i = 0; i < cuotasCopia.length; i++) {
-      if (cuotasCopia[i].restante < numeroMenor) {
+      if (cuotasCopia[i] && cuotasCopia[i].restante < numeroMenor) {
         numeroMenor = cuotasCopia[i].restante;
       }
     }
 
     console.log(numeroMenor);
+    const montoFormateado = prestamos.monto.toLocaleString("es-CO", {
+      style: "currency",
+      currency: "COP",
+    });
+    numeroPrestamoTitle.innerHTML = `${identificacionClientes.nombre} - ${montoFormateado}`;
     if (cuotasCopia.length > 0 && numeroMenor <= 0) {
       console.log(prestamos.estado);
-      await updatePrestamo({estado:false}, prestamoId);
+      await updatePrestamo({ estado: false }, prestamoId);
       prestamos.estado = false;
       console.log(prestamos.estado);
     }
@@ -72,13 +77,9 @@ async function loadContent() {
             </tr>
         `;
       });
+    }else{
+      
     }
-
-    const montoFormateado = prestamos.monto.toLocaleString("es-CO", {
-      style: "currency",
-      currency: "COP",
-    });
-    numeroPrestamoTitle.innerHTML = `${identificacionClientes.nombre} - ${montoFormateado}`;
   } catch (error) {
     console.log(error);
   } finally {
@@ -103,25 +104,52 @@ formAddCuotas.addEventListener("submit", async (e) => {
   });
   let numeroMenor = Infinity;
   for (let i = 0; i < cuotasCopia.length; i++) {
-    if (cuotasCopia[i].restante < numeroMenor) {
+    if (cuotasCopia[i] && cuotasCopia[i].restante < numeroMenor) {
       numeroMenor = cuotasCopia[i].restante;
     }
   }
-  numeroMenor =
-    numeroMenor - document.getElementById("montoCuotaFormulario").value;
-  const data = {
-    idPrestamo: prestamoId,
-    numeroCuota: parseInt(
-      document.getElementById("numeroCuotaFormulario").value
-    ),
-    monto: parseFloat(document.getElementById("montoCuotaFormulario").value),
-    fechaPago: document.getElementById("fechaPagoCuotaFormulario").value,
-    restante: numeroMenor,
-  };
-  if (await addCuotas(data)) {
-    alert("Datos enviados satisfactoriamente");
-    location.reload();
+  numeroMenor - document.getElementById("montoCuotaFormulario").value;
+  if (numeroMenor == Infinity) {
+    let Menor =
+      prestamos.total -
+      parseFloat(document.getElementById("montoCuotaFormulario").value);
+
+    const data = {
+      idPrestamo: prestamoId,
+      numeroCuota: parseInt(
+        document.getElementById("numeroCuotaFormulario").value
+      ),
+      monto: parseFloat(document.getElementById("montoCuotaFormulario").value),
+      fechaPago: document.getElementById("fechaPagoCuotaFormulario").value,
+      restante: Menor,
+    };
+    console.log(data);
+    if (await addCuotas(data)) {
+      alert("Datos enviados satisfactoriamente");
+      location.reload();
+    } else {
+      alert("No se pudo enviar los datos");
+    }
   } else {
-    alert("No se pudo enviar los datos");
+    let Menor =
+      prestamos.total -
+      parseFloat(document.getElementById("montoCuotaFormulario").value);
+
+    const data = {
+      idPrestamo: prestamoId,
+      numeroCuota: parseInt(
+        document.getElementById("numeroCuotaFormulario").value
+      ),
+      monto: parseFloat(document.getElementById("montoCuotaFormulario").value),
+      fechaPago: document.getElementById("fechaPagoCuotaFormulario").value,
+      restante: Menor,
+    };
+    console.log(data);
+    if (await addCuotas(data)) {
+      alert("Datos enviados satisfactoriamente");
+      location.reload();
+    } else {
+      alert("No se pudo enviar los datos");
+    }
   }
 });

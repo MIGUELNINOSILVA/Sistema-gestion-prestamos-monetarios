@@ -1,7 +1,7 @@
 import {Router} from "express";
 import {check}  from "express-validator";
 import {validateDocuments} from "../middlewares/validate.documents.js";
-import { getPrestamos, addPrestamo, getOnePrestamo, updatePrestamo} from "../controllers/prestamo.controller.js";
+import { getPrestamos, addPrestamo, getOnePrestamo, updatePrestamo, deletePrestamo} from "../controllers/prestamo.controller.js";
 
 const router = Router();
 
@@ -21,5 +21,6 @@ router.post('/add', [
     validateDocuments
 ],addPrestamo);
 router.patch('/update/:id', updatePrestamo);
+router.delete('/delete/:id', deletePrestamo)
 
 export default router;

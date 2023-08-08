@@ -45,9 +45,20 @@ const updatePrestamo = async(req, res) => {
     
 }
 
+const deletePrestamo = async(req, res) => {
+    try {
+        await Prestamo.deleteOne({_id:req.params.id});
+        res.status(200).send({respuesta: "Eliminado Correctamente"});
+    } catch (error) {
+        res.status(500).send(error);
+    };
+    
+}
+
 export{
     getPrestamos,
     getOnePrestamo,
     addPrestamo,
-    updatePrestamo
+    updatePrestamo,
+    deletePrestamo
 }
