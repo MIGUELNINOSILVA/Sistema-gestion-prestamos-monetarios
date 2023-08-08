@@ -1,5 +1,6 @@
 const clientesApi = "http://localhost:8002/api/clientes";
 const prestamosApi = "http://localhost:8002/api/prestamos";
+const cuotasApi = "http://localhost:8002/api/cuotas";
 
 // Clientes
 const getClientes = async () => {
@@ -114,9 +115,21 @@ const addPrestamo = async (data) => {
     }
 };
 
+// Cuotas
+const getCuotas = async () => {
+    try {
+        const req = await fetch(cuotasApi);
+        const data = await req.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    };
+};
+
 export {
     getClientes,
     getPrestamos,
+    getCuotas,
     addClientes,
     getOneClientes,
     getOnePrestamos,

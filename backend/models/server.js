@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import clienteRoute from "../routes/cliente.routes.js";
 import prestamoRoute from "../routes/prestamo.routes.js";
+import cuotaRoute from "../routes/cuota.routes.js";
 
 class Server{
     constructor(){
@@ -10,6 +11,7 @@ class Server{
         /* Paths */
         this.clientePath = "/api/clientes"; 
         this.prestamoPath = "/api/prestamos"; 
+        this.cuotaPath = "/api/cuotas"; 
         /* Middlewares */
         this.middlewares();
         /* Routing */
@@ -34,6 +36,7 @@ class Server{
     routes(){
         this.app.use(this.clientePath, clienteRoute);
         this.app.use(this.prestamoPath, prestamoRoute);
+        this.app.use(this.cuotaPath, cuotaRoute);
     }
 }
 
