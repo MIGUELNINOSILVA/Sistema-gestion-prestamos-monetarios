@@ -32,12 +32,17 @@ async function loadContent() {
       }
       // Si no cumple la condición, no se incluirá en la copia
     });
+    const filteredArray = cuotasCopia.filter(item => item !== undefined);
+    console.log("filtrado");
+    console.log(filteredArray);
 
+
+    console.log("copia");
     console.log(cuotasCopia);
     let numeroMenor = Infinity;
-    for (let i = 0; i < cuotasCopia.length; i++) {
-      if (cuotasCopia[i] && cuotasCopia[i].restante < numeroMenor) {
-        numeroMenor = cuotasCopia[i].restante;
+    for (let i = 0; i < filteredArray.length; i++) {
+      if (filteredArray[i] && filteredArray[i].restante < numeroMenor) {
+        numeroMenor = filteredArray[i].restante;
       }
     }
 
@@ -47,15 +52,15 @@ async function loadContent() {
       currency: "COP",
     });
     numeroPrestamoTitle.innerHTML = `${identificacionClientes.nombre} - ${montoFormateado}`;
-    if (cuotasCopia.length > 0 && numeroMenor <= 0) {
+    if (filteredArray.length > 0 && numeroMenor <= 0) {
       console.log(prestamos.estado);
       await updatePrestamo({ estado: false }, prestamoId);
       prestamos.estado = false;
       console.log(prestamos.estado);
     }
 
-    if (cuotasCopia.length > 0) {
-      cuotasCopia.forEach((cuotas) => {
+    if (filteredArray.length > 0) {
+      filteredArray.forEach((cuotas) => {
         const options = { year: "numeric", month: "long", day: "numeric" };
         const fechaPagoFormateada = new Date(
           cuotas.fechaPago
