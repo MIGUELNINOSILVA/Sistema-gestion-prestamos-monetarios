@@ -107,6 +107,41 @@
                             <li class="ball"></li>
                         </div>
                         <div class="recentOrders">
+                            <div class="modal">
+                                <form class="form" id="formAddCuotas">
+                                    <h2>Agregar Cuota</h2>
+                                    <div class="separator">
+                                        <hr class="line">
+                                        <p id="titleForm"></p>
+                                        <hr class="line">
+                                    </div>
+                                    <div class="credit-card-info--form">
+                                        <div class="input_container">
+                                            <label for="numeroCuotaFormulario" class="input_label">#CUOTA</label>
+                                            <input id="numeroCuotaFormulario" class="input_field" type="number"
+                                                name="input-name" title="Inpit title" placeholder="Ingresa el número de cuota"
+                                                required>
+                                        </div>
+                                        <div class="input_container">
+                                            <label for="montoCuotaFormulario" class="input_label">Monto</label>
+                                            <input id="montoCuotaFormulario" class="input_field" type="number"
+                                                name="input-name" title="Inpit title" placeholder="Ingresa el monto"
+                                                required>
+                                        </div>
+                                        <div class="input_container">
+                                            <label for="fechaPagoCuotaFormulario" class="input_label">Fecha de pago</label>
+                                            <input id="fechaPagoCuotaFormulario" class="input_field" type="date"
+                                                name="input-name" title="Inpit title" placeholder="Fecha pago">
+                                        </div>
+                                        
+    
+                                    </div>
+                                    <div style="display: flex; gap: 1rem;">
+                                        <button class="purchase--btn" type="submit">Guardar</button>
+                                        <button class="purchase--btn"><a href="./prestamos.html">Cancelar</a></button>
+                                    </div>
+                                </form>
+                            </div>
                             <h2>Cuotas</h2>
     
                             <table>

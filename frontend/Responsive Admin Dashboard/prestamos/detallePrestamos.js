@@ -2,6 +2,8 @@ import {
   getOnePrestamos,
   getClientes,
   getCuotas,
+  addCuotas,
+  updatePrestamo
 } from "../Responsive Admin Dashboard - final/assets/js/API.js";
 
 document.addEventListener("DOMContentLoaded", loadContent());
@@ -9,17 +11,16 @@ document.addEventListener("DOMContentLoaded", loadContent());
 // Selectores
 const numeroPrestamoTitle = document.getElementById("numeroPrestamoTitle");
 const tablaDetallePrestamos = document.getElementById("tablaDetallePrestamos");
+const formAddCuotas = document.getElementById("formAddCuotas");
 
 async function loadContent() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
     const prestamoId = urlParams.get("id");
-
     const clientes = await getClientes();
     const prestamos = await getOnePrestamos(prestamoId);
     const cuotas = await getCuotas();
 
-    console.log(prestamos);
     // Encontrando cliente con el id
     const identificacionClientes = clientes.find(
       (cliente) => cliente._id === prestamos.idCliente
@@ -31,14 +32,37 @@ async function loadContent() {
       }
       // Si no cumple la condición, no se incluirá en la copia
     });
+
+    console.log(cuotasCopia);
+    let numeroMenor = Infinity;
+    for (let i = 0; i < cuotasCopia.length; i++) {
+      if (cuotasCopia[i].restante < numeroMenor) {
+        numeroMenor = cuotasCopia[i].restante;
+      }
+    }
+
+    console.log(numeroMenor);
+    if (cuotasCopia.length > 0 && numeroMenor <= 0) {
+      console.log(prestamos.estado);
+      await updatePrestamo({estado:false}, prestamoId);
+      prestamos.estado = false;
+      console.log(prestamos.estado);
+    }
+
     if (cuotasCopia.length > 0) {
       cuotasCopia.forEach((cuotas) => {
         const options = { year: "numeric", month: "long", day: "numeric" };
         const fechaPagoFormateada = new Date(
           cuotas.fechaPago
         ).toLocaleDateString("es-ES", options);
-        const montoFormateado = cuotas.monto.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
-        const restantaFormateado = cuotas.restante.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+        const montoFormateado = cuotas.monto.toLocaleString("es-CO", {
+          style: "currency",
+          currency: "COP",
+        });
+        const restantaFormateado = cuotas.restante.toLocaleString("es-CO", {
+          style: "currency",
+          currency: "COP",
+        });
         tablaDetallePrestamos.innerHTML += `
             <tr>
                 <td>${cuotas.numeroCuota}</td>
@@ -62,3 +86,42 @@ async function loadContent() {
     loading.style.display = "none";
   }
 }
+
+formAddCuotas.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const urlParams = new URLSearchParams(window.location.search);
+  const prestamoId = urlParams.get("id");
+  const cuotas = await getCuotas();
+  const prestamos = await getOnePrestamos(prestamoId);
+
+  // Encontrando las cuotas con el mismo ID del prestamo
+  const cuotasCopia = cuotas.map((cuota) => {
+    if (cuota.idPrestamo === prestamos._id) {
+      return cuota;
+    }
+    // Si no cumple la condición, no se incluirá en la copia
+  });
+  let numeroMenor = Infinity;
+  for (let i = 0; i < cuotasCopia.length; i++) {
+    if (cuotasCopia[i].restante < numeroMenor) {
+      numeroMenor = cuotasCopia[i].restante;
+    }
+  }
+  numeroMenor =
+    numeroMenor - document.getElementById("montoCuotaFormulario").value;
+  const data = {
+    idPrestamo: prestamoId,
+    numeroCuota: parseInt(
+      document.getElementById("numeroCuotaFormulario").value
+    ),
+    monto: parseFloat(document.getElementById("montoCuotaFormulario").value),
+    fechaPago: document.getElementById("fechaPagoCuotaFormulario").value,
+    restante: numeroMenor,
+  };
+  if (await addCuotas(data)) {
+    alert("Datos enviados satisfactoriamente");
+    location.reload();
+  } else {
+    alert("No se pudo enviar los datos");
+  }
+});

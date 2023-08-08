@@ -35,8 +35,19 @@ const getOnePrestamo = async (req, res) => {
 
 }
 
+const updatePrestamo = async(req, res) => {
+    try {
+        let updatePrestamo = await Prestamo.findOneAndUpdate({_id:req.params.id},req.body,{new:true});
+        res.json(updatePrestamo);
+    } catch (error) {
+        res.status(500).send(error);
+    };
+    
+}
+
 export{
     getPrestamos,
     getOnePrestamo,
-    addPrestamo
+    addPrestamo,
+    updatePrestamo
 }

@@ -115,6 +115,21 @@ const addPrestamo = async (data) => {
     }
 };
 
+const updatePrestamo = async(data, id)=>{
+    try {
+        const req = await fetch(`${prestamosApi}/update/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        return req.json();
+    } catch (error) {
+        console.log(error);
+    };
+}
+
 // Cuotas
 const getCuotas = async () => {
     try {
@@ -126,6 +141,23 @@ const getCuotas = async () => {
     };
 };
 
+const addCuotas = async (data) => {
+    try {
+        const req = await fetch(`${cuotasApi}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        return req.json();
+    } catch (error) {
+
+    }
+};
+
+
+
 export {
     getClientes,
     getPrestamos,
@@ -135,5 +167,7 @@ export {
     getOnePrestamos,
     updateClientes,
     deleteClientes,
-    addPrestamo
+    addPrestamo,
+    addCuotas,
+    updatePrestamo
 }

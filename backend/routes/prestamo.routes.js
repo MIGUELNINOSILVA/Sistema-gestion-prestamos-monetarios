@@ -1,7 +1,7 @@
 import {Router} from "express";
 import {check}  from "express-validator";
 import {validateDocuments} from "../middlewares/validate.documents.js";
-import { getPrestamos, addPrestamo, getOnePrestamo } from "../controllers/prestamo.controller.js";
+import { getPrestamos, addPrestamo, getOnePrestamo, updatePrestamo} from "../controllers/prestamo.controller.js";
 
 const router = Router();
 
@@ -20,5 +20,6 @@ router.post('/add', [
     check("estado", "estado es obligatorio").not().isEmpty(),
     validateDocuments
 ],addPrestamo);
+router.patch('/update/:id', updatePrestamo);
 
 export default router;
